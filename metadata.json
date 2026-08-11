@@ -1,0 +1,6 @@
+{
+  "name": "Waris Cerdas",
+  "description": "Kalkulator Pembagian Harta Warisan Islam Berdasarkan Faraid, Al-Qur'an, Hadis, dan Kompilasi Hukum Islam (KHI)",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
