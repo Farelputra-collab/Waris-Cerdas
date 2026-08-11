@@ -31,8 +31,6 @@ const STORAGE_KEY = 'waris_cerdas_history_v1';
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewMode>('landing');
   const [isOpenMobileSidebar, setIsOpenMobileSidebar] = useState<boolean>(false);
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-  const [language, setLanguage] = useState<'id' | 'en'>('id');
 
   const [history, setHistory] = useState<CalculationResult[]>(() => {
     try {
@@ -44,15 +42,6 @@ export default function App() {
   });
 
   const [activeCalculation, setActiveCalculation] = useState<CalculationResult | null>(null);
-
-  // Sync dark mode class with HTML element
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
 
   // Persist history to LocalStorage
   useEffect(() => {
@@ -125,10 +114,6 @@ export default function App() {
           currentView={currentView}
           onOpenMobileSidebar={() => setIsOpenMobileSidebar(true)}
           onStartNewCalc={() => setCurrentView('calculator')}
-          darkMode={darkMode}
-          onToggleDarkMode={() => setDarkMode(!darkMode)}
-          language={language}
-          onToggleLanguage={() => setLanguage(l => l === 'id' ? 'en' : 'id')}
         />
 
         <main className="flex-1 p-4 sm:p-8">
@@ -187,10 +172,6 @@ export default function App() {
 
           {currentView === 'settings' && (
             <SettingsView
-              darkMode={darkMode}
-              onToggleDarkMode={() => setDarkMode(!darkMode)}
-              language={language}
-              onToggleLanguage={() => setLanguage(l => l === 'id' ? 'en' : 'id')}
               onClearHistory={handleClearHistory}
             />
           )}

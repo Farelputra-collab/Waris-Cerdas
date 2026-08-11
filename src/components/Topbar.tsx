@@ -1,25 +1,17 @@
 import React from 'react';
-import { Menu, Sun, Moon, Globe, PlusCircle } from 'lucide-react';
+import { Menu, PlusCircle } from 'lucide-react';
 import { ViewMode } from '../types/faraid';
 
 interface TopbarProps {
   currentView: ViewMode;
   onOpenMobileSidebar: () => void;
   onStartNewCalc: () => void;
-  darkMode: boolean;
-  onToggleDarkMode: () => void;
-  language: 'id' | 'en';
-  onToggleLanguage: () => void;
 }
 
 export const Topbar: React.FC<TopbarProps> = ({
   currentView,
   onOpenMobileSidebar,
-  onStartNewCalc,
-  darkMode,
-  onToggleDarkMode,
-  language,
-  onToggleLanguage
+  onStartNewCalc
 }) => {
   const getViewTitle = () => {
     switch (currentView) {
@@ -66,27 +58,6 @@ export const Topbar: React.FC<TopbarProps> = ({
             <span>Hitung Waris</span>
           </button>
         )}
-
-        {/* Language Toggle */}
-        <button
-          onClick={onToggleLanguage}
-          className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700"
-          title="Ubah Bahasa"
-        >
-          <div className="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950 flex items-center justify-center text-[#0F766E] dark:text-[#D4AF37] font-bold text-[10px]">
-            {language.toUpperCase()}
-          </div>
-          <span className="uppercase text-xs font-bold">Bahasa</span>
-        </button>
-
-        {/* Dark Mode Toggle */}
-        <button
-          onClick={onToggleDarkMode}
-          className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200 dark:border-slate-700"
-          title={darkMode ? 'Mode Terang' : 'Mode Gelap'}
-        >
-          {darkMode ? <Sun className="w-4 h-4 text-[#D4AF37]" /> : <Moon className="w-4 h-4 text-slate-600" />}
-        </button>
 
         {/* User Profile Avatar */}
         <div className="flex items-center space-x-2 pl-2 border-l border-slate-200 dark:border-slate-800">
